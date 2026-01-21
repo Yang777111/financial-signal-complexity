@@ -8,6 +8,7 @@
 - Runtime results match the Big-O expectations; speedup summary: **35.2x faster at N=100000 (windowed_k10 vs naive)**.
 - Naive runtime is dominated by repeated `sum(...)` over growing history (confirmed by cProfile).
 - Windowed runtime is dominated by constant-time deque updates and arithmetic.
+- The optimized moving average implementation achieves the same asymptotic efficiency as the windowed approach (O(1) per tick and O(k) space) by using incremental updates and bounded buffers, eliminating the repeated full-history summations present in the naive baseline.
 
 ## Benchmark Results
 | Strategy | N ticks | Runtime (s) | Runtime / tick (µs) | Peak Memory (MiB) | Signals |
